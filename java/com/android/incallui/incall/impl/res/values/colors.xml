@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="incall_first_pass_background">#EEF2F6</color>
+  <color name="incall_controls_panel_background">#DDE4EE</color>
+  <color name="incall_controls_panel_stroke">#14000000</color>
+
+  <color name="incall_button_surface">#FFFFFFFF</color>
+  <color name="incall_button_surface_checked">#FFDCE9FA</color>
+  <color name="incall_button_icon_default">@android:color/system_neutral1_900</color>
+  <color name="incall_button_icon_checked">@android:color/system_accent1_700</color>
+  <color name="incall_button_ripple_first_pass">#24000000</color>
+</resources>

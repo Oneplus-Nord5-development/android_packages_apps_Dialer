@@ -23,7 +23,7 @@
     </selector>
   </item>
   <item>
-    <ripple android:color="@color/incall_button_ripple">
+    <ripple android:color="@color/incall_button_ripple_first_pass">
       <item
         android:id="@android:id/mask"
         android:gravity="center">

@@ -74,6 +74,15 @@ final class BottomNavItem extends LinearLayout {
   }
 
   @Override
+  protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    if (activeIndicatorAnimator != null) {
+      activeIndicatorAnimator.cancel();
+      activeIndicatorAnimator = null;
+    }
+  }
+
+  @Override
   public void setSelected(boolean selected) {
     super.setSelected(selected);
     int colorId = selected

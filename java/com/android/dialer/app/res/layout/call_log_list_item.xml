@@ -40,6 +40,7 @@
     style="@style/CallLogCardStyle">
 
     <LinearLayout
+      android:id="@+id/call_log_row_content"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -62,14 +63,13 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
+            android:layout_gravity="center_vertical"
             >
 
           <com.android.dialer.app.calllog.DialerQuickContactBadge
               android:id="@+id/quick_contact_photo"
               android:layout_width="@dimen/contact_photo_size"
               android:layout_height="@dimen/contact_photo_size"
-              android:paddingTop="2dp"
               android:nextFocusRight="@id/primary_action_view"
               android:focusable="true"
               android:forceDarkAllowed="false" />
@@ -149,7 +149,7 @@
           android:layout_width="@dimen/call_log_list_item_primary_action_dimen"
           android:layout_height="@dimen/call_log_list_item_primary_action_dimen"
           android:layout_gravity="center_vertical"
-          android:background="?android:attr/selectableItemBackgroundBorderless"
+          android:background="@drawable/oval_ripple"
           android:scaleType="center"
           android:visibility="gone"
           app:tint="?colorIcon" />

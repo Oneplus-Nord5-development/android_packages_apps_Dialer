@@ -23,18 +23,20 @@
   <dimen name="select_all_text_left_padding">18dp</dimen>
 
   <!-- Call Log -->
-  <dimen name="call_log_horizontal_margin">8dp</dimen>
-  <dimen name="call_log_outer_margin">8dp</dimen>
-  <dimen name="call_log_start_margin">8dp</dimen>
+  <dimen name="call_log_horizontal_margin">10dp</dimen>
+  <dimen name="call_log_outer_margin">12dp</dimen>
+  <dimen name="call_log_start_margin">12dp</dimen>
   <dimen name="call_log_name_margin_bottom">2dp</dimen>
   <dimen name="call_log_call_account_margin_bottom">2dp</dimen>
-  <dimen name="call_log_vertical_padding">8dp</dimen>
-  <dimen name="call_log_list_item_info_margin_start">16dp</dimen>
+  <dimen name="call_log_vertical_padding">12dp</dimen>
+  <dimen name="call_log_list_item_info_margin_start">14dp</dimen>
+  <dimen name="call_log_group_outer_spacing">5dp</dimen>
+  <dimen name="call_log_group_corner_radius">26dp</dimen>
 
   <!-- Size of contact photos in the call log and call details. -->
-  <dimen name="contact_photo_size">48dp</dimen>
+  <dimen name="contact_photo_size">52dp</dimen>
 
-  <dimen name="call_log_list_item_primary_action_dimen">48dp</dimen>
+  <dimen name="call_log_list_item_primary_action_dimen">44dp</dimen>
 
   <dimen name="voicemail_playback_top_padding">12dp</dimen>
 

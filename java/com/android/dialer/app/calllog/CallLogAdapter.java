@@ -688,6 +688,7 @@ public class CallLogAdapter extends GroupingListAdapter
       return;
     } else {
       views.callLogEntryView.setVisibility(View.VISIBLE);
+      applyDayGroupCardStyle(views, details);
       // dayGroupHeader will be restored after loadAndRender() if it is needed.
     }
     if (currentlyExpandedRowId == views.rowId) {
@@ -727,6 +728,13 @@ public class CallLogAdapter extends GroupingListAdapter
 
     viewHolder.asyncTask = loadDataTask;
     loadDataTask.execute();
+  }
+
+  private void applyDayGroupCardStyle(CallLogListItemViewHolder views, PhoneCallDetails details) {
+    int currentDayGroup = getDayGroup(views.rowId);
+    boolean isFirstInDayGroup = currentDayGroup != details.previousGroup;
+    boolean isLastInDayGroup = currentDayGroup != details.nextGroup;
+    views.applyDayGroupStyle(isFirstInDayGroup, isLastInDayGroup);
   }
 
   public interface LoadDataTaskInterface {
@@ -822,6 +830,7 @@ public class CallLogAdapter extends GroupingListAdapter
     // Stash away the Ids of the calls so that we can support deleting a row in the call log.
     views.callIds = getCallIds(cursor, count);
     details.previousGroup = getPreviousDayGroup(cursor);
+    details.nextGroup = getNextDayGroup(cursor);
 
     // Store values used when the actions ViewStub is inflated on expansion.
     views.number = number;
@@ -999,6 +1008,7 @@ public class CallLogAdapter extends GroupingListAdapter
     } else {
       views.showActions(false);
     }
+    applyDayGroupCardStyle(views, details);
     views.dayGroupHeader.setVisibility(views.dayGroupHeaderVisibility);
     views.dayGroupHeader.setText(views.dayGroupHeaderText);
   }
@@ -1060,6 +1070,10 @@ public class CallLogAdapter extends GroupingListAdapter
 
     collapseExpandedCard();
     notifyItemChanged(viewHolder.getAdapterPosition());
+    // The previous item might need to update rounded-corner styling.
+    if (viewHolder.getAdapterPosition() > 0) {
+      notifyItemChanged(viewHolder.getAdapterPosition() - 1);
+    }
     // The next item might have to update its day group label
     notifyItemChanged(viewHolder.getAdapterPosition() + 1);
   }
@@ -1080,6 +1094,10 @@ public class CallLogAdapter extends GroupingListAdapter
     hiddenItemUris.remove(uri);
     hiddenRowIds.remove(rowId);
     notifyItemChanged(adapterPosition);
+    // The previous item might need to update rounded-corner styling.
+    if (adapterPosition > 0) {
+      notifyItemChanged(adapterPosition - 1);
+    }
     // The next item might have to update its day group label
     notifyItemChanged(adapterPosition + 1);
   }
@@ -1110,8 +1128,25 @@ public class CallLogAdapter extends GroupingListAdapter
     return result;
   }
 
+  private int getNextDayGroup(Cursor cursor) {
+    // We want to restore the position in the cursor at the end.
+    int startingPosition = cursor.getPosition();
+    moveToNextNonHiddenRow(cursor);
+    if (cursor.isAfterLast()) {
+      cursor.moveToPosition(startingPosition);
+      return CallLogGroupBuilder.DAY_GROUP_NONE;
+    }
+    int result = getDayGroup(cursor.getLong(CallLogQuery.ID));
+    cursor.moveToPosition(startingPosition);
+    return result;
+  }
+
   private void moveToPreviousNonHiddenRow(Cursor cursor) {
     while (cursor.moveToPrevious() && hiddenRowIds.contains(cursor.getLong(CallLogQuery.ID))) {}
+  }
+
+  private void moveToNextNonHiddenRow(Cursor cursor) {
+    while (cursor.moveToNext() && hiddenRowIds.contains(cursor.getLong(CallLogQuery.ID))) {}
   }
 
   /**
