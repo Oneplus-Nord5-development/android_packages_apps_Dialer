@@ -19,8 +19,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/incall_first_pass_background">
+    android:layout_height="match_parent">
 
   <RelativeLayout
       android:id="@+id/incall_ui_container"
@@ -28,14 +27,13 @@
       android:layout_height="match_parent"
       android:clipChildren="false"
       android:clipToPadding="false"
-      android:fitsSystemWindows="true"
-      android:theme="@style/ThemeOverlayInCallVoiceFirstPass">
+      android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@id/incall_contact_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -43,7 +41,7 @@
           android:id="@id/contactgrid_avatar"
           android:layout_width="@dimen/incall_avatar_size"
           android:layout_height="@dimen/incall_avatar_size"
-          android:layout_marginBottom="16dp"
+          android:layout_marginBottom="8dp"
           android:elevation="2dp"/>
 
       <include
@@ -78,7 +76,7 @@
       <FrameLayout
           android:id="@+id/incall_location_holder"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
+          android:layout_height="match_parent"/>
 
       <include
           layout="@layout/device_number_row"
@@ -86,22 +84,10 @@
           android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <View
-        android:id="@+id/incall_controls_panel"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/incall_contact_grid"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/incall_controls_panel_top_margin"
-        android:background="@drawable/incall_controls_panel_background"/>
-
     <com.android.dialer.widget.LockableViewPager
         android:id="@+id/incall_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/incall_controls_panel_padding_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="@dimen/incall_controls_panel_padding_horizontal"
         android:layout_above="@+id/incall_paginator"
         android:layout_below="@+id/incall_contact_grid"
         android:layout_centerHorizontal="true"/>
@@ -111,7 +97,6 @@
         android:layout_width="@dimen/paginator_width"
         android:layout_height="@dimen/paginator_height"
         android:layout_above="@+id/incall_end_call"
-        android:layout_marginBottom="12dp"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
 
@@ -127,9 +112,9 @@
         tools:visibility="gone"/>
     <ImageButton
         android:id="@+id/incall_end_call"
-        style="@style/Incall.Button.End.FirstPass"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="@dimen/incall_end_call_bottom_margin_first_pass"
+        style="@style/Incall.Button.End"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="36dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/incall_content_description_end_call"/>

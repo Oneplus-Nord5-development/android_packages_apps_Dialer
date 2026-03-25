@@ -18,7 +18,6 @@
 package com.android.dialer.app.calllog;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.provider.CallLog.Calls;
@@ -150,9 +149,10 @@ public class PhoneCallDetailsHelper {
       views.callAccountLabel.setVisibility(View.VISIBLE);
       views.callAccountLabel.setText(accountLabel);
       int color = callLogCache.getAccountColor(details.accountHandle);
-      int defaultColor = ThemeComponent.get(context).theme().getTextColorSecondary();
-      if (isNightMode() || color == PhoneAccount.NO_HIGHLIGHT_COLOR) {
-        views.callAccountLabel.setTextColor(defaultColor);
+      if (color == PhoneAccount.NO_HIGHLIGHT_COLOR) {
+        int defaultColor = R.color.dialer_secondary_text_color;
+        views.callAccountLabel.setTextColor(context.getResources().getColor(defaultColor,
+                context.getTheme()));
       } else {
         views.callAccountLabel.setTextColor(color);
       }
@@ -330,12 +330,6 @@ public class PhoneCallDetailsHelper {
    */
   private long getCurrentTimeMillis() {
     return System.currentTimeMillis();
-  }
-
-  private boolean isNightMode() {
-    int nightModeFlags =
-        context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-    return nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
   }
 
   /** Sets the call count, date, and if it is a voicemail, sets the duration. */

@@ -17,27 +17,8 @@
 
 <resources>
 
-  <color name="paginator_dot">#CC1E1E1E</color>
-  <color name="paginator_path">#331E1E1E</color>
-
-  <style name="ThemeOverlayInCallVoiceFirstPass">
-    <item name="android:textColorPrimary">@android:color/system_neutral1_900</item>
-    <item name="android:textColorSecondary">@android:color/system_neutral2_700</item>
-    <item name="android:colorControlNormal">@android:color/system_neutral1_900</item>
-  </style>
-
-  <style name="Incall.Button.End.FirstPass" parent="android:Widget.Material.Button">
-    <item name="android:background">@drawable/incall_end_call_background_pill</item>
-    <item name="android:elevation">6dp</item>
-    <item name="android:layout_height">@dimen/incall_end_call_button_height_first_pass</item>
-    <item name="android:layout_width">@dimen/incall_end_call_button_width_first_pass</item>
-    <item name="android:minHeight">0dp</item>
-    <item name="android:minWidth">0dp</item>
-    <item name="android:padding">8dp</item>
-    <item name="android:src">@drawable/quantum_ic_call_end_vd_theme_24</item>
-    <item name="android:tint">@android:color/white</item>
-    <item name="android:stateListAnimator">@animator/disabled_alpha</item>
-  </style>
+  <color name="paginator_dot">#FFF</color>
+  <color name="paginator_path">#66FFFFFF</color>
 
   <style name="DialpadContainer">
     <item name="android:layout_alignParentTop">true</item>

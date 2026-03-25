@@ -19,10 +19,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/main_bottom_nav_bar_background"
-    android:paddingTop="2dp"
-    android:paddingBottom="2dp"
-    android:elevation="4dp">
+    android:background="@color/rounded_dialpad_bg_color"
+    android:elevation="8dp">
 
   <include
       android:id="@+id/speed_dial_tab"

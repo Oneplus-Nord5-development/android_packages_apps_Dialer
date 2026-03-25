@@ -113,8 +113,6 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
   public final TextView dayGroupHeader;
   /** The view containing the details for the call log row, including the action buttons. */
   public final CardView callLogEntryView;
-  /** The row content view used to draw day-group top/middle/bottom rounded backgrounds. */
-  public final View callLogEntryContentView;
   /** The actionable view which places a call to the number corresponding to the call log row. */
   public final ImageView primaryActionButtonView;
 
@@ -221,7 +219,6 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
   public int dayGroupHeaderVisibility;
   public CharSequence dayGroupHeaderText;
   public boolean isAttachedToWindow;
-  private final int callLogGroupOuterSpacing;
 
   public CallLogAdapter.LoadDataTaskInterface asyncTask;
   private CallDetailsEntries callDetailsEntries;
@@ -240,7 +237,6 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
       View primaryActionView,
       PhoneCallDetailsViews phoneCallDetailsViews,
       CardView callLogEntryView,
-      View callLogEntryContentView,
       TextView dayGroupHeader,
       ImageView primaryActionButtonView) {
     super(rootView);
@@ -264,13 +260,10 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
     this.primaryActionView = primaryActionView;
     this.phoneCallDetailsViews = phoneCallDetailsViews;
     this.callLogEntryView = callLogEntryView;
-    this.callLogEntryContentView = callLogEntryContentView;
     this.dayGroupHeader = dayGroupHeader;
     this.primaryActionButtonView = primaryActionButtonView;
     this.workIconView = rootView.findViewById(R.id.work_profile_icon);
     this.checkBoxView = rootView.findViewById(R.id.quick_contact_checkbox);
-    callLogGroupOuterSpacing = context.getResources().getDimensionPixelSize(
-            R.dimen.call_log_group_outer_spacing);
 
     // Set text height to false on the TextViews so they don't have extra padding.
     phoneCallDetailsViews.nameView.setElegantTextHeight(false);
@@ -316,7 +309,6 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
         view.findViewById(R.id.primary_action_view),
         PhoneCallDetailsViews.fromView(view),
         (CardView) view.findViewById(R.id.call_log_row),
-        view.findViewById(R.id.call_log_row_content),
         (TextView) view.findViewById(R.id.call_log_day_group_label),
         (ImageView) view.findViewById(R.id.primary_action_button));
   }
@@ -735,30 +727,6 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
     updatePrimaryActionButton(show);
   }
 
-  public void applyDayGroupStyle(boolean isFirstInDayGroup, boolean isLastInDayGroup) {
-    if (isFirstInDayGroup && isLastInDayGroup) {
-      callLogEntryContentView.setBackgroundResource(R.drawable.call_log_group_background_single);
-    } else if (isFirstInDayGroup) {
-      callLogEntryContentView.setBackgroundResource(R.drawable.call_log_group_background_top);
-    } else if (isLastInDayGroup) {
-      callLogEntryContentView.setBackgroundResource(R.drawable.call_log_group_background_bottom);
-    } else {
-      callLogEntryContentView.setBackgroundResource(R.drawable.call_log_group_background_middle);
-    }
-
-    ViewGroup.MarginLayoutParams layoutParams =
-        (ViewGroup.MarginLayoutParams) callLogEntryView.getLayoutParams();
-    int targetTopMargin = isFirstInDayGroup ? callLogGroupOuterSpacing : 0;
-    int targetBottomMargin = isLastInDayGroup ? callLogGroupOuterSpacing : 0;
-    if (layoutParams.topMargin == targetTopMargin
-        && layoutParams.bottomMargin == targetBottomMargin) {
-      return;
-    }
-    layoutParams.topMargin = targetTopMargin;
-    layoutParams.bottomMargin = targetBottomMargin;
-    callLogEntryView.setLayoutParams(layoutParams);
-  }
-
   private void animateActions(boolean shouldExpand) {
     boolean isExpanded = actionsView.getVisibility() == View.VISIBLE;
     if (shouldExpand == isExpanded) {
@@ -777,13 +745,13 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
     if (shouldExpand) {
       targetHeight = currentHeight + additionalHeight;
       colorFrom = res.getColor(android.R.color.transparent, context.getTheme());
-      colorTo = res.getColor(android.R.color.transparent, context.getTheme());
+      colorTo  = res.getColor(R.color.cardBackgroundColor, context.getTheme());
       interpolator = new AccelerateDecelerateInterpolator();
       targetVisibility = View.VISIBLE;
       targetElevation = 4f;
     } else {
       targetHeight = currentHeight - additionalHeight;
-      colorFrom = res.getColor(android.R.color.transparent, context.getTheme());
+      colorFrom  = res.getColor(R.color.cardBackgroundColor, context.getTheme());
       colorTo = res.getColor(android.R.color.transparent, context.getTheme());
       interpolator = new DecelerateInterpolator();
       targetVisibility = View.GONE;

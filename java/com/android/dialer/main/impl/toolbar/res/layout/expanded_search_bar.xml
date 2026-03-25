@@ -25,9 +25,9 @@
 
   <ImageButton
       android:id="@+id/search_back_button"
-      android:layout_width="52dp"
-      android:layout_height="52dp"
-      android:layout_marginStart="6dp"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:layout_marginStart="8dp"
       android:layout_centerVertical="true"
       android:background="?attr/selectableItemBackgroundBorderless"
       android:contentDescription="@string/action_menu_back_from_search"
@@ -42,8 +42,8 @@
       android:layout_toEndOf="@+id/search_back_button"
       android:layout_toStartOf="@+id/search_clear_button"
       android:layout_centerVertical="true"
-      android:layout_marginStart="10dp"
-      android:minHeight="52dp"
+      android:layout_marginStart="8dp"
+      android:minHeight="48dp"
       android:background="@null"
       android:imeOptions="flagNoExtractUi"
       android:inputType="textFilter"
@@ -52,12 +52,12 @@
       android:textColor="?android:attr/textColorSecondary"
       android:textColorHint="?android:attr/textColorHint"
       android:textCursorDrawable="@drawable/custom_cursor"
-      android:textSize="17sp"/>
+      android:textSize="16sp"/>
 
   <ImageView
       android:id="@+id/search_clear_button"
-      android:layout_width="52dp"
-      android:layout_height="52dp"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
       android:layout_alignParentEnd="true"
       android:layout_centerVertical="true"
       android:scaleType="center"

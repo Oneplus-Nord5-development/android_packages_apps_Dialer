@@ -21,6 +21,7 @@ import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
@@ -118,8 +119,6 @@ public class CheckableLabeledButton extends LinearLayout implements Checkable {
         context.getResources().getDimensionPixelOffset(R.dimen.incall_button_label_margin);
     labelView.setLayoutParams(labelParams);
     labelView.setTextAppearance(R.style.Dialer_Incall_TextAppearance_Label);
-    labelView.setTextColor(
-        getResources().getColorStateList(R.color.incall_button_icon, context.getTheme()));
     labelView.setText(labelText);
     labelView.setSingleLine();
     labelView.setMaxEms(9);
@@ -142,12 +141,10 @@ public class CheckableLabeledButton extends LinearLayout implements Checkable {
   }
 
   public void setCheckedColor(@ColorInt int color) {
-    int defaultColor =
-        getResources().getColor(R.color.incall_button_icon_default, getContext().getTheme());
     iconView.setImageTintList(
         new ColorStateList(
             new int[][] {new int[] {android.R.attr.state_checked}, new int[] {}},
-            new int[] {color, defaultColor}));
+            new int[] {color, Color.WHITE}));
   }
 
   public Drawable getIconDrawable() {

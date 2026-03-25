@@ -43,9 +43,9 @@
 
         <ImageView
             android:id="@+id/search_magnifying_glass"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="6dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
             android:layout_centerVertical="true"
             android:importantForAccessibility="no"
             android:scaleType="center"
@@ -56,18 +56,18 @@
             android:id="@+id/search_box_start_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/search_magnifying_glass"
             android:layout_toStartOf="@+id/voice_search_button"
             android:text="@string/dialer_hint_find_contact"
-            android:textSize="17sp"
+            android:textSize="16sp"
             style="@style/Dialer.TextAppearance.Secondary"/>
 
         <ImageView
             android:id="@+id/voice_search_button"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_toStartOf="@+id/main_options_menu_button"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/description_start_voice_search"
@@ -77,8 +77,8 @@
 
         <ImageButton
             android:id="@+id/main_options_menu_button"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/action_menu_overflow_description"
